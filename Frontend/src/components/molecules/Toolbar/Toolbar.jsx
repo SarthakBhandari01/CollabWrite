@@ -1,6 +1,7 @@
 import { FontFamilyButton } from "@/components/atoms/Buttons/FontFamilyButton";
 import { HeadingLevelButton } from "@/components/atoms/Buttons/HeadingLevelButton";
 import { HighlightColorButton } from "@/components/atoms/Buttons/HighlightColorButton";
+import { LinkButton } from "@/components/atoms/Buttons/LinkButton";
 import { TextColorButton } from "@/components/atoms/Buttons/TextColorButton";
 import { ToolbarButton } from "@/components/atoms/Buttons/ToolbarButton";
 import { Separator } from "@/components/ui/separator";
@@ -119,6 +120,7 @@ export const Toolbar = () => {
       <TextColorButton />
       <HighlightColorButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
+      <LinkButton />
       {sections[2].map((item) => {
         return (
           <ToolbarButton
