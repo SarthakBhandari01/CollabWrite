@@ -15,6 +15,9 @@ import TextStyle from "@tiptap/extension-text-style";
 import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
+import TextAlign from "@tiptap/extension-text-align";
+import { LineHeightExtension } from "@/extensions/line-height";
+import { Ruler } from "@/components/molecules/Ruler/Ruler";
 
 export const Editor = () => {
   const { setEditor } = useEditorStore();
@@ -60,6 +63,13 @@ export const Editor = () => {
         autolink: true,
         defaultProtocol: "https",
       }),
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+      LineHeightExtension.configure({
+        types: ["heading", "paragraph"],
+        defaultLineHeight: "1.5",
+      }),
       Color,
       History,
       FontFamily,
@@ -92,6 +102,7 @@ export const Editor = () => {
   });
   return (
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible ">
+      <Ruler />
       <div className="min-w-max flex justify-center  w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent key={"tiptap-editor"} editor={editor} />
       </div>
