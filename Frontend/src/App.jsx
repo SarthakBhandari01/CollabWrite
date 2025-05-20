@@ -1,9 +1,9 @@
-import { DocumentEditorPage } from "./components/pages/DocumentEditor";
+import AppRoutes from "./routes";
 
 function App() {
   return (
     <>
-      <DocumentEditorPage />
+      <AppRoutes />
     </>
   );
 }

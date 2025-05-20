@@ -1,6 +1,7 @@
-import { Navbar } from "../organisms/Navbar/Navbar";
-import { Toolbar } from "../molecules/Toolbar/Toolbar";
-import { Editor } from "../organisms/Editor/Editor";
+import { Toolbar } from "@/components/molecules/Toolbar/Toolbar";
+import { Editor } from "@/components/organisms/Editor/Editor";
+import { Navbar } from "@/components/organisms/Navbar/Navbar";
+
 
 export const DocumentEditorPage = () => {
   return (
