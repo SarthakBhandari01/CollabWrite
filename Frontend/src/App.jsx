@@ -1,11 +1,9 @@
-import { Toolbar } from "./components/molecules/Toolbar/Toolbar";
-import { Editor } from "./components/organisms/Editor/Editor";
+import { DocumentEditorPage } from "./components/pages/DocumentEditor";
 
 function App() {
   return (
     <>
-      <Toolbar />
-      <Editor />
+      <DocumentEditorPage />
     </>
   );
 }
