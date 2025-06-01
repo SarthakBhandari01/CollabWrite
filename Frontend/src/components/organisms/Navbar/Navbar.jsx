@@ -32,9 +32,10 @@ import {
   UnderlineIcon,
   Undo2Icon,
 } from "lucide-react";
+import { DocumentInput } from "@/components/molecules/DocumentInput/DocumentInput";
 // import { toast } from "sonner";
 
-export const Navbar = ({ data }) => {
+export const Navbar = () => {
   const { editor } = useEditorStore();
 
   const onDownload = (blob, filename) => {
@@ -52,7 +53,7 @@ export const Navbar = ({ data }) => {
     const blob = new Blob([JSON.stringify(content)], {
       type: "application/json",
     });
-    onDownload(blob, `${data.title}.json`);
+    onDownload(blob, `document.json`);
   };
 
   const onSaveHTML = () => {
@@ -61,7 +62,7 @@ export const Navbar = ({ data }) => {
     const blob = new Blob([content], {
       type: "text/html",
     });
-    onDownload(blob, `${data.title}.html`);
+    onDownload(blob, `document.html`);
   };
 
   const onSaveText = () => {
@@ -71,7 +72,7 @@ export const Navbar = ({ data }) => {
     const blob = new Blob([content], {
       type: "text/plain",
     });
-    onDownload(blob, `${data.title}.txt`);
+    onDownload(blob, `document.txt`);
   };
 
   const insertTable = ({ rows, cols }) => {
@@ -89,7 +90,7 @@ export const Navbar = ({ data }) => {
           <img src="../../../../logo1.svg" alt="logo" width={36} height={36} />
         </Link>
         <div className="flex flex-col">
-          {/* document input */}
+          <DocumentInput />
           <div className="flex">
             <Menubar className="border-none bg-transparent shadow-none h-auto p-0">
               <MenubarMenu>

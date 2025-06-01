@@ -111,6 +111,8 @@ export const Toolbar = () => {
       <Separator orientation="vertical" className="h-4  bg-gray-400" />
       <HeadingLevelButton />
       <Separator orientation="vertical" className="h-4   bg-gray-400" />
+      {/* Font size button */}
+      <Separator orientation="vertical" className="h-4   bg-gray-400" />
       {sections[1].map((item) => {
         return (
           <ToolbarButton
