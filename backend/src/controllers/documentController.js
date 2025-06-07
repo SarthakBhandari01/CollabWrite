@@ -12,14 +12,6 @@ export const createDocumentController = async (req, res) => {
     const userId = req.user;
     const { title, content } = req.body;
 
-    // Validate the request body
-    if (!title || !userId) {
-      return res.status(400).json({
-        success: false,
-        message: "Title, owner are required",
-      });
-    }
-
     // Create the document
     const document = await createDocumentService({
       title: title || "Untitled Document",
