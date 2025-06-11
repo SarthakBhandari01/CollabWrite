@@ -1,21 +1,23 @@
 import axios from "../../config/axiosConfig";
 
-export const createDocument = async (description, title, token) => {
+export const createDocumentRequest = async (content, title, token) => {
   try {
+    console.log("Creating document with content:", content, "and title:", title);
+    console.log("Using token:", token);
     const response = await axios.post(
-      "/documents",
+      "/documents/",
       {
         title: title || "Untitled Document",
-        description: description || "No description provided",
+        content: content || "",
       },
       {
         headers: {
-          "x-access-token": token,
+          "x-access-header": token,
         },
       }
     );
     console.log("Document created successfully:", response.data);
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.error("Error creating document:", error);
     throw error;

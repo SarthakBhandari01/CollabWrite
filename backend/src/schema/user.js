@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 const userSchema = new mongoose.Schema(
-  {
+  { avatar:{ type: String},
     username: { type: String, required: true, unique: true, trim: true },
     email: {
       type: String,
@@ -28,7 +28,7 @@ userSchema.pre("save", function saveUser(next) {
   const SALT = bcrypt.genSaltSync(saltRounds);
   const hashPassword = bcrypt.hashSync(user.password, SALT);
   user.password = hashPassword;
-  // user.avatar = `https://robohash.org/${user.name}`;
+  user.avatar = `https://robohash.org/${user.name}`;
   next();
 });
 const User = mongoose.model("User", userSchema);

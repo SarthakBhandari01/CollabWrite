@@ -51,6 +51,7 @@ export const signInService = async (userDetail) => {
       _id: user._id,
       email: user.email,
       username: user.username,
+      avatar: user.avatar,
       token,
     };
   } catch (error) {

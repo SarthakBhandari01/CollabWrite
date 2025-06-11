@@ -4,15 +4,23 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import templates from "./Templates";
+import { useCreateDocument } from "@/hooks/apis/documents/useCreateDocument";
+import { useNavigate } from "react-router-dom";
 
 export const TemplatesGallery = () => {
-  const [isCreating, setIsCreating] = useState(false);
-
-  function onTemplateClick(title, initialContent) {
-    console.log(title, initialContent);
-    setIsCreating(true);
+  const navigate = useNavigate();
+  const { isPending, createDocumentMutation } = useCreateDocument();
+  async function onTemplateClick(title, initialContent) {
+    try {
+      const data = await createDocumentMutation({
+        title,
+        content: initialContent,
+      });
+      navigate(`/documents/${data?._id}`);
+    } catch (error) {
+      console.error("Error creating document:", error);
+    }
   }
   return (
     <div className="bg-[#F1F3F4]">
@@ -31,11 +39,11 @@ export const TemplatesGallery = () => {
                   <div
                     className={cn(
                       "aspect-[3/4] flex flex-col gap-y-2.5",
-                      isCreating && "pointer-events-none opacity-50"
+                      isPending && "pointer-events-none opacity-50"
                     )}
                   >
                     <button
-                      disabled={isCreating}
+                      disabled={isPending}
                       // TODO: Add proper initial content
                       onClick={() =>
                         onTemplateClick(template.label, template.initialContent)
